@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AvaExplorer XP</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="titlebar">
+  <div class="title-left"><span class="xp-logo">▣</span><span>AvaExplorer</span></div>
+  <div class="window-buttons"><button aria-label="Minimize">_</button><button aria-label="Maximize">□</button><button class="close" aria-label="Close">×</button></div>
+</header>
+<div class="menubar"><span>File</span><span>Edit</span><span>View</span><span>Favorites</span><span>Tools</span><span>Help</span></div>
+<div class="toolbar">
+  <button id="backBtn" title="Back">◀ <small>Back</small></button>
+  <button id="forwardBtn" title="Forward" disabled>▶</button>
+  <button id="upBtn" title="Up one level">⬆ <small>Up</small></button>
+  <span class="tool-separator"></span>
+  <button id="searchBtn">🔎 <small>Search</small></button>
+  <button id="foldersBtn">📁 <small>Folders</small></button>
+  <span class="toolbar-spacer"></span>
+  <button id="viewBtn">▤ <small>Views</small></button>
+</div>
+<div class="address-row"><b>Address</b><span class="address-icon">📁</span><input id="address" spellcheck="false"><button id="goBtn">Go</button></div>
+<div class="main">
+  <aside class="sidebar">
+    <section class="task-panel">
+      <h3>File and Folder Tasks <span>⌃</span></h3>
+      <button id="newFolderBtn">📁 Make a new folder</button>
+      <button id="renameBtn">✎ Rename this item</button>
+      <button id="deleteBtn">🗑 Delete this item</button>
+    </section>
+    <section class="task-panel places">
+      <h3>Other Places <span>⌃</span></h3>
+      <button data-place="home">🏠 My Documents</button>
+      <button data-place="drives">💽 My Computer</button>
+      <button data-place="desktop">🖥 Desktop</button>
+      <button data-place="downloads">⬇ Downloads</button>
+    </section>
+    <section class="task-panel details">
+      <h3>Details <span>⌃</span></h3>
+      <p id="selectedDetails">Select a file or folder to view its details.</p>
+    </section>
+  </aside>
+  <main class="file-area">
+    <div class="view-heading"><span id="folderIcon">📁</span><strong id="folderTitle">Loading...</strong></div>
+    <div class="list-header"><span>Name</span><span>Size</span><span>Type</span><span>Date Modified</span></div>
+    <div id="fileList" class="file-list"></div>
+    <div id="emptyState" class="empty-state" hidden>This folder is empty.</div>
+  </main>
+</div>
+<footer class="statusbar"><span id="statusText">Ready</span><span id="itemCount">0 objects</span></footer>
+<div id="dialogShade" class="dialog-shade" hidden>
+  <div class="dialog">
+    <div class="dialog-title"><span id="dialogTitle">AvaExplorer</span><button id="dialogClose">×</button></div>
+    <div id="dialogBody"></div>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
