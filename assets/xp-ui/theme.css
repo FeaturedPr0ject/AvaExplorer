@@ -1,0 +1,26 @@
+:root {
+  --xp-title-start: #5ca8ff;
+  --xp-title-mid: #0864df;
+  --xp-title-end: #0753c8;
+  --xp-link: #245ba6;
+  --xp-selection: #316ac5;
+  --xp-selection-border: #1d55aa;
+  --xp-task-border: #b9cde4;
+  --xp-desktop: #f3f2eb;
+  --xp-panel: #fff;
+  --xp-border: #c9c6b8;
+  --xp-toolbar-top: #fff;
+  --xp-toolbar-bottom: #f2f0e6;
+  --xp-folder-yellow: #f7c84f;
+  --xp-folder-edge: #a8741b;
+  --xp-text: #202020;
+  --xp-muted: #666;
+  --xp-font: Tahoma, Arial, sans-serif;
+}
+.xp-button { border: 1px solid #a5a397; border-radius: 3px; background: linear-gradient(#fff, #e5e3d9); color: var(--xp-text); font: 12px var(--xp-font); padding: 5px 10px; }
+.xp-button:hover { border-color: #6e9dd5; background: linear-gradient(#fff, #e2edff); }
+.xp-link { color: var(--xp-link); text-decoration: none; }
+.xp-link:hover { text-decoration: underline; }
+.xp-inset { border: 1px solid #8ba8c7; background: #fff; box-shadow: inset 1px 1px 2px #ddd; }
+.xp-panel { background: var(--xp-panel); border: 1px solid var(--xp-task-border); border-radius: 5px; overflow: hidden; }
+.xp-panel-title { padding: 8px 9px; color: #2058a6; background: linear-gradient(90deg, #fff, #dceafa); border-bottom: 1px solid #d2e0f1; font: bold 12px var(--xp-font); }

@@ -1,0 +1,33 @@
+{
+  "name": "AvaExplorer XP-inspired UI",
+  "version": 1,
+  "note": "Original UI assets inspired by Windows XP Explorer; not extracted Windows system resources.",
+  "colors": {
+    "titleBlueStart": "#5CA8FF",
+    "titleBlueMid": "#0864DF",
+    "titleBlueEnd": "#0753C8",
+    "linkBlue": "#245BA6",
+    "selectionBlue": "#316AC5",
+    "selectionBorder": "#1D55AA",
+    "taskPanelBorder": "#B9CDE4",
+    "desktop": "#F3F2EB",
+    "panel": "#FFFFFF",
+    "classicBorder": "#C9C6B8",
+    "folderYellow": "#F7C84F",
+    "folderEdge": "#A8741B",
+    "text": "#202020",
+    "muted": "#666666"
+  },
+  "typography": {
+    "family": "Tahoma, Arial, sans-serif",
+    "baseSize": "12px",
+    "headingSize": "19px"
+  },
+  "geometry": {
+    "toolbarHeight": "46px",
+    "addressHeight": "32px",
+    "statusHeight": "23px",
+    "sidebarWidth": "202px",
+    "rowHeight": "25px"
+  }
+}

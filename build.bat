@@ -6,7 +6,7 @@ py -m pip install --upgrade pip
 py -m pip install -r requirements.txt
 if errorlevel 1 goto error
 echo Building AvaExplorer XP...
-py -m PyInstaller --noconfirm --clean --windowed --name AvaExplorer --add-data "index.html;." --add-data "styles.css;." --add-data "app.js;." app.py
+py -m PyInstaller --noconfirm --clean --windowed --name AvaExplorer --add-data "index.html;." --add-data "styles.css;." --add-data "app.js;." --add-data "assets;assets" app.py
 if errorlevel 1 goto error
 echo.
 echo Build complete. Check the dist folder for AvaExplorer.exe

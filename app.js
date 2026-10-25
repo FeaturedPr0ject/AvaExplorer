@@ -16,13 +16,17 @@ function fmtSize(n) {
   return v.toFixed(v >= 10 ? 0 : 1) + " " + units[i];
 }
 function iconFor(item) {
-  if (item.is_dir) return "📁";
+  if (item.kind === "drive" || item.type === "Drive") return "xp-drive";
+  if (item.is_dir) return "xp-folder";
   const ext = (item.name.split(".").pop() || "").toLowerCase();
-  if (["png","jpg","jpeg","gif","bmp","webp","svg"].includes(ext)) return "🖼️";
-  if (["zip","7z","rar","gz"].includes(ext)) return "🗜️";
-  if (["exe","msi"].includes(ext)) return "⚙️";
-  if (["txt","md","log"].includes(ext)) return "📄";
-  return "📃";
+  if (["png","jpg","jpeg","gif","bmp","webp","svg"].includes(ext)) return "xp-image";
+  if (["zip","7z","rar","gz","tar"].includes(ext)) return "xp-archive";
+  if (["exe","msi","bat","cmd"].includes(ext)) return "xp-application";
+  if (["txt","md","log","ini","cfg","json","xml","py","js","css","html"].includes(ext)) return "xp-text";
+  return "xp-document";
+}
+function iconHtml(item, className = "file-icon") {
+  return `<svg class="${className}" aria-hidden="true"><use href="assets/xp-ui/icons.svg#${iconFor(item)}"></use></svg>`;
 }
 function showError(message) { showDialog("AvaExplorer", `<p class="dialog-message">${escapeHtml(message)}</p><div class="dialog-actions"><button id="okBtn">OK</button></div>`); $("okBtn").onclick = closeDialog; }
 function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
@@ -44,7 +48,7 @@ async function navigate(path, addHistory=true) {
   entries.forEach(item => {
     const row = document.createElement("div");
     row.className = "file-row";
-    row.innerHTML = `<span class="file-name"><span class="file-icon">${iconFor(item)}</span>${escapeHtml(item.name)}</span><span>${fmtSize(item.size)}</span><span>${escapeHtml(item.type)}</span><span>${escapeHtml(item.modified)}</span>`;
+    row.innerHTML = `<span class="file-name">${iconHtml(item)}<span class="file-label">${escapeHtml(item.name)}</span></span><span>${fmtSize(item.size)}</span><span>${escapeHtml(item.type)}</span><span>${escapeHtml(item.modified)}</span>`;
     row.onclick = () => selectItem(item, row);
     row.ondblclick = () => openItem(item);
     row.oncontextmenu = e => { e.preventDefault(); selectItem(item, row); showItemMenu(e.clientX, e.clientY, item); };
@@ -55,6 +59,7 @@ async function navigate(path, addHistory=true) {
   $("backBtn").disabled = historyIndex <= 0;
   $("forwardBtn").disabled = historyIndex >= history.length - 1;
   $("selectedDetails").textContent = "Select a file or folder to view its details.";
+  $("folderIcon").innerHTML = '<use href="assets/xp-ui/icons.svg#xp-folder-open"></use>';
 }
 function selectItem(item, row) {
   selected = item;
@@ -120,14 +125,14 @@ $("upBtn").onclick = async () => { const r = await window.pywebview.api.parent_p
 $("backBtn").onclick = () => { if (historyIndex > 0) { historyIndex--; navigate(history[historyIndex], false); } };
 $("forwardBtn").onclick = () => { if (historyIndex < history.length - 1) { historyIndex++; navigate(history[historyIndex], false); } };
 $("foldersBtn").onclick = () => { showSidebar = !showSidebar; document.querySelector(".sidebar").style.display = showSidebar ? "" : "none"; };
-$("viewBtn").onclick = () => showDialog("Views", `<p class="dialog-message">Current view: Details</p><div class="dialog-actions"><button id="viewOk">OK</button></div>`);
+$("viewBtn").onclick = () => { showDialog("Views", `<p class="dialog-message">Current view: ${escapeHtml(viewMode === "details" ? "Details" : viewMode)}</p><div class="dialog-actions"><button id="viewOk">OK</button></div>`); $("viewOk").onclick = closeDialog; };
 $("searchBtn").onclick = () => askName("Search", "Find files whose name contains:", "", async query => {
   if (!query) return;
   const found = entries.filter(x => x.name.toLowerCase().includes(query.toLowerCase()));
   $("fileList").innerHTML = "";
   found.forEach(item => {
     const row = document.createElement("div"); row.className = "file-row";
-    row.innerHTML = `<span class="file-name"><span class="file-icon">${iconFor(item)}</span>${escapeHtml(item.name)}</span><span>${fmtSize(item.size)}</span><span>${escapeHtml(item.type)}</span><span>${escapeHtml(item.modified)}</span>`;
+    row.innerHTML = `<span class="file-name">${iconHtml(item)}<span class="file-label">${escapeHtml(item.name)}</span></span><span>${fmtSize(item.size)}</span><span>${escapeHtml(item.type)}</span><span>${escapeHtml(item.modified)}</span>`;
     row.onclick = () => selectItem(item, row); row.ondblclick = () => openItem(item); $("fileList").appendChild(row);
   });
   $("emptyState").hidden = found.length !== 0;
@@ -139,12 +144,13 @@ document.querySelectorAll("[data-place]").forEach(btn => btn.onclick = async () 
     const drives = await window.pywebview.api.get_drives();
     $("fileList").innerHTML = "";
     drives.forEach(d => {
-      const item = {name:d.name,path:d.path,type:"Drive",size:null,modified:"",is_dir:true};
+      const item = {name:d.name,path:d.path,type:"Drive",size:null,modified:"",is_dir:true,kind:"drive"};
       const row = document.createElement("div"); row.className = "file-row";
-      row.innerHTML = `<span class="file-name"><span class="file-icon">💽</span>${escapeHtml(d.name)}</span><span></span><span>Drive</span><span></span>`;
+      row.innerHTML = `<span class="file-name">${iconHtml(item)}<span class="file-label">${escapeHtml(d.name)}</span></span><span></span><span>Drive</span><span></span>`;
       row.onclick = () => selectItem(item,row); row.ondblclick = () => navigate(d.path); $("fileList").appendChild(row);
     });
     $("folderTitle").textContent = "My Computer";
+    $("folderIcon").innerHTML = '<use href="assets/xp-ui/icons.svg#xp-computer"></use>';
     $("statusText").textContent = `${drives.length} drives`;
     $("itemCount").textContent = `${drives.length} objects`;
     return;
