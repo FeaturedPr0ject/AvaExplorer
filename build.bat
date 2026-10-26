@@ -9,7 +9,7 @@ echo Building AvaExplorer XP...
 py -m PyInstaller --noconfirm --clean --windowed --name AvaExplorer --add-data "index.html;." --add-data "styles.css;." --add-data "app.js;." --add-data "assets;assets" app.py
 if errorlevel 1 goto error
 echo.
-echo Build complete. Check the dist folder for AvaExplorer.exe
+echo Build complete. Check dist\AvaExplorer\AvaExplorer.exe
 pause
 exit /b 0
 :error
