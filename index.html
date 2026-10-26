@@ -11,9 +11,9 @@
 <header class="titlebar" id="titlebar">
   <div class="title-left"><svg class="app-logo" aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-computer"/></svg><span>AvaExplorer</span></div>
   <div class="window-buttons">
-    <button id="minimizeBtn" aria-label="Minimize" title="Minimize">_</button>
-    <button id="maximizeBtn" aria-label="Maximize" title="Maximize">□</button>
-    <button id="closeBtn" class="close" aria-label="Close" title="Close">×</button>
+    <button id="minimizeBtn" class="caption-btn minimize" aria-label="Minimize" title="Minimize"><span></span></button>
+    <button id="maximizeBtn" class="caption-btn maximize" aria-label="Maximize" title="Maximize"><span></span></button>
+    <button id="closeBtn" class="caption-btn close" aria-label="Close" title="Close"><span></span></button>
   </div>
 </header>
 <div class="menubar"><span>File</span><span>Edit</span><span>View</span><span>Favorites</span><span>Tools</span><span>Help</span></div>
@@ -58,7 +58,7 @@
 <footer class="statusbar"><span id="statusText">Ready</span><span id="itemCount">0 objects</span></footer>
 <div id="dialogShade" class="dialog-shade" hidden>
   <div class="dialog">
-    <div class="dialog-title"><span id="dialogTitle">AvaExplorer</span><button id="dialogClose">×</button></div>
+    <div class="dialog-title"><span id="dialogTitle">AvaExplorer</span><button id="dialogClose" aria-label="Close dialog">×</button></div>
     <div id="dialogBody"></div>
   </div>
 </div>
