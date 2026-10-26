@@ -7,3 +7,6 @@ dist/
 *.spec
 .vscode/
 .idea/
+
+# Locally supplied Windows XP shell icons; not redistributed in the public repository
+assets/xp-ui/windows-xp/shell32.dll/
