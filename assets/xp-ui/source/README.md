@@ -1,0 +1,1 @@
+Place the provided sprite sheet here as `windows-xp-sprite.png` to use the default slicing command. The tool also accepts a custom source path. The source image is not committed here automatically; only add images you have permission to redistribute.
