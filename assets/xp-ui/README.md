@@ -1,19 +1,17 @@
-# AvaExplorer XP UI Kit
+# AvaExplorer XP UI kit
 
-A small XP Explorer-inspired design kit created for AvaExplorer.
+A compact, original UI kit inspired by Windows XP Explorer and the Luna visual style.
 
-## Included
-- `icons.svg`: original SVG symbols for folders, drives, common file types, toolbar actions and sidebar places.
-- `theme.css`: reusable XP-inspired colors and UI tokens.
-- `theme.json`: machine-readable theme values.
-- Main app integration: `index.html`, `app.js`, `styles.css`.
+- `icons.svg`: vector symbols for the toolbar, folders, drives, file types and navigation.
+- `theme.css`: reusable CSS design tokens and control styles.
+- `theme.json`: machine-readable color, typography and spacing values.
 
-## Use an icon
+The graphics are original SVG recreations inspired by the era and do not include copied Windows XP DLLs, system files, or extracted proprietary icon binaries.
+
+Use an icon from the sprite:
+
 ```html
 <svg class="file-icon" aria-hidden="true">
   <use href="assets/xp-ui/icons.svg#xp-folder"></use>
 </svg>
 ```
-
-## Notes
-This is an original recreation inspired by the visual language of Windows XP Explorer. It does not include copied DLLs, OS files, or extracted proprietary Windows XP icons.
