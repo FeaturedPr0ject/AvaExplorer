@@ -25,8 +25,22 @@ function iconFor(item) {
   if (["txt","md","log","ini","cfg","json","xml","py","js","css","html"].includes(ext)) return "xp-text";
   return "xp-document";
 }
+const shell32IconFor = item => {
+  if (item.kind === "drive" || item.type === "Drive") return "ICON8_1.ico";
+  if (item.is_dir) return "ICON4_1.ico";
+  const ext = (item.name.split(".").pop() || "").toLowerCase();
+  if (["png","jpg","jpeg","gif","bmp","webp","svg","tif","tiff"].includes(ext)) return "ICON248_1.ico";
+  if (["zip","7z","rar","gz","tar","cab","iso"].includes(ext)) return "ICON41_1.ico";
+  if (["exe","msi","bat","cmd","com"].includes(ext)) return "ICON303_1.ico";
+  if (["mp3","wav","flac","ogg","m4a"].includes(ext)) return "ICON277_1.ico";
+  if (["mp4","avi","mkv","mov","wmv"].includes(ext)) return "ICON226_1.ico";
+  if (["txt","md","log","ini","cfg","json","xml","py","js","css","html","yml","yaml"].includes(ext)) return "ICON152_1.ico";
+  return "ICON133_1.ico";
+};
 function iconHtml(item, className = "file-icon") {
-  return `<svg class="${className}" aria-hidden="true"><use href="assets/xp-ui/icons.svg#${iconFor(item)}"></use></svg>`;
+  const fallback = iconFor(item);
+  const shellIcon = shell32IconFor(item);
+  return `<img class="${className} shell32-icon" src="assets/xp-ui/windows-xp/shell32.dll/${shellIcon}" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><svg class="${className} xp-fallback" hidden aria-hidden="true"><use href="assets/xp-ui/icons.svg#${fallback}"></use></svg>`;
 }
 function showError(message) { showDialog("AvaExplorer", `<p class="dialog-message">${escapeHtml(message)}</p><div class="dialog-actions"><button id="okBtn">OK</button></div>`); $("okBtn").onclick = closeDialog; }
 function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
