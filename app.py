@@ -14,6 +14,29 @@ def resource_path(relative):
 class FileAPI:
     def __init__(self):
         self.current_path = str(Path.home())
+        self.window = None
+        self._maximized = False
+
+    def minimize_window(self):
+        if self.window:
+            self.window.minimize()
+        return True
+
+    def toggle_maximize(self):
+        if not self.window:
+            return {"maximized": False}
+        if self._maximized:
+            self.window.restore()
+            self._maximized = False
+        else:
+            self.window.maximize()
+            self._maximized = True
+        return {"maximized": self._maximized}
+
+    def close_window(self):
+        if self.window:
+            self.window.destroy()
+        return True
 
     def get_drives(self):
         drives = []
@@ -28,10 +51,7 @@ class FileAPI:
         return drives
 
     def list_dir(self, path=None):
-        if path:
-            candidate = os.path.abspath(os.path.expanduser(path))
-        else:
-            candidate = self.current_path
+        candidate = os.path.abspath(os.path.expanduser(path)) if path else self.current_path
         if not os.path.isdir(candidate):
             return {"ok": False, "error": "Folder does not exist."}
         try:
@@ -118,8 +138,12 @@ def main():
         width=1100,
         height=720,
         min_size=(760, 480),
-        background_color="#ECE9D8"
+        background_color="#ECE9D8",
+        frameless=True,
+        easy_drag=True,
+        shadow=True
     )
+    api.window = window
     webview.start(debug=False)
 
 if __name__ == "__main__":
