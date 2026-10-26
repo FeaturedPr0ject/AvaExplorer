@@ -9,7 +9,7 @@
     "linkBlue": "#245BA6",
     "selectionBlue": "#316AC5",
     "selectionBorder": "#1D55AA",
-    "taskPanelBorder": "#B9CDE4",
+    "taskPanelBorder": "#A9C5E4",
     "desktop": "#F3F2EB",
     "panel": "#FFFFFF",
     "classicBorder": "#C9C6B8",
@@ -24,10 +24,10 @@
     "headingSize": "19px"
   },
   "geometry": {
-    "toolbarHeight": "46px",
-    "addressHeight": "32px",
+    "toolbarHeight": "48px",
+    "addressHeight": "33px",
     "statusHeight": "23px",
-    "sidebarWidth": "202px",
+    "sidebarWidth": "205px",
     "rowHeight": "25px"
   }
 }
