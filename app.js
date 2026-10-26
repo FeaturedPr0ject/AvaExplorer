@@ -51,7 +51,7 @@ async function navigate(path, addHistory=true) {
     row.innerHTML = `<span class="file-name">${iconHtml(item)}<span class="file-label">${escapeHtml(item.name)}</span></span><span>${fmtSize(item.size)}</span><span>${escapeHtml(item.type)}</span><span>${escapeHtml(item.modified)}</span>`;
     row.onclick = () => selectItem(item, row);
     row.ondblclick = () => openItem(item);
-    row.oncontextmenu = e => { e.preventDefault(); selectItem(item, row); showItemMenu(e.clientX, e.clientY, item); };
+    row.oncontextmenu = e => { e.preventDefault(); selectItem(item, row); showItemMenu(item); };
     $("fileList").appendChild(row);
   });
   $("statusText").textContent = currentPath;
@@ -108,7 +108,7 @@ async function deleteSelected() {
     if (!r.ok) showError(r.error); else navigate(currentPath, false);
   };
 }
-function showItemMenu(x, y, item) {
+function showItemMenu(item) {
   showDialog("File Options", `<p class="dialog-message"><b>${escapeHtml(item.name)}</b></p><div class="dialog-actions"><button id="menuOpen">Open</button><button id="menuRename">Rename</button><button id="menuDelete">Delete</button><button id="menuCancel">Cancel</button></div>`);
   $("menuOpen").onclick = () => { closeDialog(); openItem(item); };
   $("menuRename").onclick = () => { closeDialog(); renameSelected(); };
@@ -161,4 +161,10 @@ document.querySelectorAll("[data-place]").forEach(btn => btn.onclick = async () 
   if (place === "downloads") p = p.replace(/[^\\/]+$/, "Downloads");
   navigate(p);
 });
+$("minimizeBtn").onclick = () => window.pywebview.api.minimize_window();
+$("maximizeBtn").onclick = async () => {
+  const result = await window.pywebview.api.toggle_maximize();
+  $("maximizeBtn").textContent = result.maximized ? "❐" : "□";
+};
+$("closeBtn").onclick = () => window.pywebview.api.close_window();
 window.addEventListener("pywebviewready", () => navigate());
