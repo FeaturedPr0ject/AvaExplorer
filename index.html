@@ -8,9 +8,13 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="titlebar">
+<header class="titlebar" id="titlebar">
   <div class="title-left"><svg class="app-logo" aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-computer"/></svg><span>AvaExplorer</span></div>
-  <div class="window-buttons"><button aria-label="Minimize">_</button><button aria-label="Maximize">□</button><button class="close" aria-label="Close">×</button></div>
+  <div class="window-buttons">
+    <button id="minimizeBtn" aria-label="Minimize" title="Minimize">_</button>
+    <button id="maximizeBtn" aria-label="Maximize" title="Maximize">□</button>
+    <button id="closeBtn" class="close" aria-label="Close" title="Close">×</button>
+  </div>
 </header>
 <div class="menubar"><span>File</span><span>Edit</span><span>View</span><span>Favorites</span><span>Tools</span><span>Help</span></div>
 <div class="toolbar">
@@ -18,12 +22,12 @@
   <button id="forwardBtn" title="Forward" disabled><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-forward"/></svg><small>Forward</small></button>
   <button id="upBtn" title="Up one level"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-up"/></svg><small>Up</small></button>
   <span class="tool-separator"></span>
-  <button id="searchBtn"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-search"/></svg><small>Search</small></button>
-  <button id="foldersBtn"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-folders"/></svg><small>Folders</small></button>
+  <button id="searchBtn" title="Search"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-search"/></svg><small>Search</small></button>
+  <button id="foldersBtn" title="Toggle folders pane"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-folders"/></svg><small>Folders</small></button>
   <span class="toolbar-spacer"></span>
-  <button id="viewBtn"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-details"/></svg><small>Views</small></button>
+  <button id="viewBtn" title="View options"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-details"/></svg><small>Views</small></button>
 </div>
-<div class="address-row"><b>Address</b><svg class="address-icon" aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-folder"/></svg><input id="address" spellcheck="false"><button id="goBtn">Go</button></div>
+<div class="address-row"><b>Address</b><svg class="address-icon" aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-folder"/></svg><input id="address" spellcheck="false" aria-label="Address"><button id="goBtn">Go</button></div>
 <div class="main">
   <aside class="sidebar">
     <section class="task-panel">
