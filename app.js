@@ -164,7 +164,7 @@ document.querySelectorAll("[data-place]").forEach(btn => btn.onclick = async () 
 $("minimizeBtn").onclick = () => window.pywebview.api.minimize_window();
 $("maximizeBtn").onclick = async () => {
   const result = await window.pywebview.api.toggle_maximize();
-  $("maximizeBtn").textContent = result.maximized ? "❐" : "□";
+  $("maximizeBtn").classList.toggle("is-maximized", !!result.maximized);
 };
 $("closeBtn").onclick = () => window.pywebview.api.close_window();
 window.addEventListener("pywebviewready", () => navigate());
