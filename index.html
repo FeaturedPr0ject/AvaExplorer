@@ -9,7 +9,7 @@
 </head>
 <body>
 <header class="titlebar" id="titlebar">
-  <div class="title-left"><svg class="app-logo" aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-computer"/></svg><span>AvaExplorer</span></div>
+  <div class="title-left"><img class="shell32-static-icon app-logo" src="assets/xp-ui/windows-xp/shell32.dll/ICON16_1.ico" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><svg class="app-logo xp-fallback" hidden aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-computer"/></svg><span>AvaExplorer</span></div>
   <div class="window-buttons">
     <button id="minimizeBtn" class="caption-btn minimize" aria-label="Minimize" title="Minimize"><span></span></button>
     <button id="maximizeBtn" class="caption-btn maximize" aria-label="Maximize" title="Maximize"><span></span></button>
@@ -22,26 +22,26 @@
   <button id="forwardBtn" title="Forward" disabled><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-forward"/></svg><small>Forward</small></button>
   <button id="upBtn" title="Up one level"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-up"/></svg><small>Up</small></button>
   <span class="tool-separator"></span>
-  <button id="searchBtn" title="Search"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-search"/></svg><small>Search</small></button>
-  <button id="foldersBtn" title="Toggle folders pane"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-folders"/></svg><small>Folders</small></button>
+  <button id="searchBtn" title="Search"><img class="shell32-static-icon" src="assets/xp-ui/windows-xp/shell32.dll/ICON23_1.ico" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><svg class="xp-fallback" hidden aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-search"/></svg><small>Search</small></button>
+  <button id="foldersBtn" title="Toggle folders pane"><img class="shell32-static-icon" src="assets/xp-ui/windows-xp/shell32.dll/ICON5_1.ico" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><svg class="xp-fallback" hidden aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-folders"/></svg><small>Folders</small></button>
   <span class="toolbar-spacer"></span>
   <button id="viewBtn" title="View options"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-details"/></svg><small>Views</small></button>
 </div>
-<div class="address-row"><b>Address</b><svg class="address-icon" aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-folder"/></svg><input id="address" spellcheck="false" aria-label="Address"><button id="goBtn">Go</button></div>
+<div class="address-row"><b>Address</b><img class="shell32-static-icon address-icon" src="assets/xp-ui/windows-xp/shell32.dll/ICON4_1.ico" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><svg class="address-icon xp-fallback" hidden aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-folder"/></svg><input id="address" spellcheck="false" aria-label="Address"><button id="goBtn">Go</button></div>
 <div class="main">
   <aside class="sidebar">
     <section class="task-panel">
       <h3>File and Folder Tasks <span>⌃</span></h3>
-      <button id="newFolderBtn"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-new-folder"/></svg>Make a new folder</button>
-      <button id="renameBtn"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-rename"/></svg>Rename this item</button>
-      <button id="deleteBtn"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-delete"/></svg>Delete this item</button>
+      <button id="newFolderBtn"><img class="shell32-static-icon" src="assets/xp-ui/windows-xp/shell32.dll/ICON258_1.ico" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><svg class="xp-fallback" hidden aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-new-folder"/></svg>Make a new folder</button>
+      <button id="renameBtn"><img class="shell32-static-icon" src="assets/xp-ui/windows-xp/shell32.dll/ICON35_1.ico" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><svg class="xp-fallback" hidden aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-rename"/></svg>Rename this item</button>
+      <button id="deleteBtn"><img class="shell32-static-icon" src="assets/xp-ui/windows-xp/shell32.dll/ICON191_1.ico" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><svg class="xp-fallback" hidden aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-delete"/></svg>Delete this item</button>
     </section>
     <section class="task-panel places">
       <h3>Other Places <span>⌃</span></h3>
-      <button data-place="home"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-documents"/></svg>My Documents</button>
-      <button data-place="drives"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-computer"/></svg>My Computer</button>
-      <button data-place="desktop"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-desktop"/></svg>Desktop</button>
-      <button data-place="downloads"><svg aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-downloads"/></svg>Downloads</button>
+      <button data-place="home"><img class="shell32-static-icon" src="assets/xp-ui/windows-xp/shell32.dll/ICON20_1.ico" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><svg class="xp-fallback" hidden aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-documents"/></svg>My Documents</button>
+      <button data-place="drives"><img class="shell32-static-icon" src="assets/xp-ui/windows-xp/shell32.dll/ICON16_1.ico" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><svg class="xp-fallback" hidden aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-computer"/></svg>My Computer</button>
+      <button data-place="desktop"><img class="shell32-static-icon" src="assets/xp-ui/windows-xp/shell32.dll/ICON3_1.ico" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><svg class="xp-fallback" hidden aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-desktop"/></svg>Desktop</button>
+      <button data-place="downloads"><img class="shell32-static-icon" src="assets/xp-ui/windows-xp/shell32.dll/ICON244_1.ico" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><svg class="xp-fallback" hidden aria-hidden="true"><use href="assets/xp-ui/icons.svg#xp-downloads"/></svg>Downloads</button>
     </section>
     <section class="task-panel details">
       <h3>Details <span>⌃</span></h3>
